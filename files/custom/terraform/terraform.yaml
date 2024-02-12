@@ -1,0 +1,22 @@
+receivers:
+  prometheus:
+    config:
+      scrape_configs:
+      - job_name: "splunk-o11y-sas"
+        scrape_interval: "60s"
+        metrics_path: "/metrics"
+        static_configs:
+        - targets:
+          - "localhost:2112"
+service:
+  pipelines:
+    metrics/terraform:
+      receivers:
+        - prometheus
+      processors:
+        - memory_limiter
+        - resourcedetection/system
+      exporters:
+        - otlphttp
+          
+          
