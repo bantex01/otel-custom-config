@@ -1,0 +1,11 @@
+exporters:
+  debug:
+    verbosity: normal
+    sampling_initial: 50
+    sampling_thereafter: 200
+    
+  otlphttp:
+    endpoint: adalton.com
+    tls:
+      insecure: false
+      insecure_skip_verify: false

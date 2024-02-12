@@ -1,0 +1,10 @@
+processors:
+  memory_limiter:
+    check_interval: 5s
+    limit_mib: 64
+    spike_limit_mib: 16
+    
+  resourcedetection/system:
+    detectors: ["system"]
+    system:
+      hostname_sources: ["os"]

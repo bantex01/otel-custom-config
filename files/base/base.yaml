@@ -1,0 +1,6 @@
+service:
+  extensions:
+    - health_check
+  telemetry:
+    metrics:
+      level: none

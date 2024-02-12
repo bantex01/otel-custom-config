@@ -1,0 +1,21 @@
+receivers:
+  hostmetrics/cpu:
+    collection_interval: 60s
+    scrapers:
+      cpu:
+        metrics:
+          system.cpu.utilization:
+            enabled: true
+          system.cpu.time:
+            enabled: false
+            
+service:
+  pipelines:
+    metrics/cpu:
+      receivers:
+        - hostmetrics/cpu
+      processors:
+        - memory_limiter
+        - resourcedetection/system
+      exporters:
+        - otlphttp
